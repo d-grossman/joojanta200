@@ -1,0 +1,28 @@
+from  bvlc/caffe:cpu
+maintainer dgrossman@iqt.org
+RUN apt-get update
+RUN apt-get install -y vim
+run pip install jupyter
+RUN mkdir /work
+WORKDIR /work
+
+ADD ./includes /includes
+
+RUN mkdir model
+RUN git clone https://github.com/torrvision/crfasrnn.git
+WORKDIR /work/crfasrnn
+RUN git clone https://github.com/torrvision/caffe.git
+WORKDIR /work/crfasrnn/caffe
+RUN cp /includes/Makefile.config .
+RUN make
+RUN make pycaffe
+RUN make distribute
+WORKDIR /work/crfasrnn/python-scripts
+RUN cp *par /work
+RUN cp /includes/TVG_CRFRNN_new_deploy.prototxt.dg /work/crfasrnn/python-scripts
+RUN cp /includes/JooJanta200.ipynb /work
+WORKDIR /work
+
+EXPOSE 8888
+#CMD ["/usr/local/bin/jupyter","notebook","--ip 0.0.0.0","--allow-root"]
+CMD ["/usr/local/bin/jupyter","notebook","--allow-root","--ip=0.0.0.0"]]
