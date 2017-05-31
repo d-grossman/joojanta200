@@ -21,8 +21,13 @@ WORKDIR /work/crfasrnn/python-scripts
 RUN cp *par /work
 RUN cp /includes/TVG_CRFRNN_new_deploy.prototxt.dg /work/crfasrnn/python-scripts
 RUN cp /includes/JooJanta200.ipynb /work
+RUN cp /includes/*py /work
 WORKDIR /work
 
+RUN mkdir /work/inputImages
+RUN mkdir /work/outputImages
+
 EXPOSE 8888
-#CMD ["/usr/local/bin/jupyter","notebook","--ip 0.0.0.0","--allow-root"]
-CMD ["/usr/local/bin/jupyter","notebook","--allow-root","--ip=0.0.0.0"]]
+#CMD ["/usr/local/bin/jupyter","notebook","--allow-root","--ip=0.0.0.0"]]
+CMD ["/usr/bin/python","./processAll.py"]
+
