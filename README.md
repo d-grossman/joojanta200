@@ -9,9 +9,7 @@ for people that want to remove backgrounds in bulk. fill **dirOfInputImages** wi
 download TVG_CRFRNN_COCO_VOC.caffemodel  model somewhere and pass directory holding it to the container.
 ```
 wget -O TVG_CRFRNN_COCO_VOC.caffemodel http://goo.gl/j7PrPZ 
-```
-assign **somePort** to an unused port on your machines
- 
+``` 
   Build:
 ```
   docker build -f Dockerfile.joojanta200.bulkProcess .
@@ -21,7 +19,6 @@ assign **somePort** to an unused port on your machines
   docker run -v /dirOfInputImages:/work/inputImages \
              -v /dirToWriteImages:/work/outputImages \
              -v /dir/to/500megModel:/work/model 
-             -p<somePort>:8888 <containerid>
 ```
   
 ### Dockerfile.joojanta200.notebook 
