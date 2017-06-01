@@ -11,8 +11,12 @@ ADD ./includes /includes
 RUN mkdir model
 RUN git clone https://github.com/torrvision/crfasrnn.git
 WORKDIR /work/crfasrnn
+RUN git checkout 3b9c6b61e5416d2d38b5c6cdf6f8dcc02fafcc43
+
 RUN git clone https://github.com/torrvision/caffe.git
 WORKDIR /work/crfasrnn/caffe
+RUN git checkout e7f25fa2bdbb291a067930d60f337d305c128583
+
 RUN cp /includes/Makefile.config .
 RUN make
 RUN make pycaffe
