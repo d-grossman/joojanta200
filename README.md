@@ -39,3 +39,9 @@ assign **somePort** to an unused port on your machine.  The container will spew 
   docker run -v /dir/to/500megModel:/work/model \
              -p<somePort>:8888 <containerid>
 ```
+
+### how not to screw thins up in the future..
+things work with the following versions
+https://github.com/BVLC/caffe/tree/master/docker commit 4db619aec9cd384b11a1c55fac257d14b704bb15
+https://github.com/torrvision/crfasrnn commit 3b9c6b61e5416d2d38b5c6cdf6f8dcc02fafcc43
+https://github.com/torrvision/caffe commit e7f25fa2bdbb291a067930d60f337d305c128583
