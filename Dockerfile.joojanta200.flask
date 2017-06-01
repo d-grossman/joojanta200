@@ -1,0 +1,39 @@
+from  bvlc/caffe:cpu
+maintainer dgrossman@iqt.org
+RUN apt-get update
+RUN apt-get install -y vim
+run pip install jupyter
+RUN mkdir /work
+WORKDIR /work
+
+ADD ./includes /includes
+
+RUN mkdir model
+RUN git clone https://github.com/torrvision/crfasrnn.git
+WORKDIR /work/crfasrnn
+RUN git checkout 3b9c6b61e5416d2d38b5c6cdf6f8dcc02fafcc43
+
+RUN git clone https://github.com/torrvision/caffe.git
+WORKDIR /work/crfasrnn/caffe
+RUN git checkout e7f25fa2bdbb291a067930d60f337d305c128583
+
+RUN cp /includes/Makefile.config .
+RUN make
+RUN make pycaffe
+RUN make distribute
+WORKDIR /work/crfasrnn/python-scripts
+RUN cp *par /work
+RUN cp /includes/TVG_CRFRNN_new_deploy.prototxt.dg /work/crfasrnn/python-scripts
+RUN cp /includes/JooJanta200.ipynb /work
+RUN cp /includes/*py /work
+WORKDIR /work
+
+RUN mkdir /work/inputImages
+RUN mkdir /work/outputImages
+RUN mv /includes/flask /work/flask
+WORKDIR /work/flask
+RUN pip install flask
+
+EXPOSE 8888
+CMD ["/usr/bin/python","./app.py"]
+
