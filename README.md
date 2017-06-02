@@ -22,7 +22,7 @@ for people that want to remove backgrounds in bulk. fill **dirOfInputImages** wi
 ```
   docker run -v /dirOfInputImages:/work/inputImages \
              -v /dirToWriteImages:/work/outputImages \
-             -v /dir/to/500megModel:/work/model 
+             -v /dir/to/500megModel:/work/model <containerid>
 ```
   
 ### Dockerfile.joojanta200.notebook 
@@ -38,7 +38,7 @@ assign **somePort** to an unused port on your machine.  The container will spew 
   Run:
 ```
   docker run -v /dir/to/500megModel:/work/model \
-             -p<somePort>:8888 <containerid>
+             -p <somePort>:8888 <containerid>
 ```
 ### Dockerfile.joojanta200.flask
 
@@ -51,7 +51,7 @@ Simple webapp, user pastes image uri, container downloads image, processes and d
 Run:
 ```
   docker run -v /dir/to/500megModel:/work/model \
-             -p<somePort>:5000 <containerid>
+             -p <somePort>:5000 <containerid>
 ```
 
 
