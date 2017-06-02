@@ -60,3 +60,4 @@ things work with the following versions
   1. https://github.com/BVLC/caffe/tree/master/docker commit 4db619aec9cd384b11a1c55fac257d14b704bb15
   1. https://github.com/torrvision/crfasrnn commit 3b9c6b61e5416d2d38b5c6cdf6f8dcc02fafcc43 [done]
   1. https://github.com/torrvision/caffe commit e7f25fa2bdbb291a067930d60f337d305c128583 [done]
+  1. TVG_CRFRNN_COCO_VOC.caffemodel bc4926ad00ecc9a1c627db82377ecf56  (md5sum)
