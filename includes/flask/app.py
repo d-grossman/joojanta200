@@ -19,11 +19,18 @@ def work_it():
     print(request.form)
     if uri:
         print ('downloading uri {0}'.format(uri))
-        urllib.urlretrieve(uri,'/work/flask/static/top.jpg')
-        call(['bash','/work/flask/doit.sh'])
-        return json.dumps({'topImage':'/static/top.jpg','bottomImage':'/static/bottom.bmp'})
+        try:
+            urllib.urlretrieve(uri,'/work/flask/static/top.jpg')
+        except:
+            return json.dumps({'ret':'False','msg':'could not download {0}'.format(uri)})
+
+        try:
+            call(['bash','/work/flask/doit.sh'])
+            return json.dumps({'ret':'True','topImage':'/static/top.jpg','bottomImage':'/static/bottom.bmp','msg':'success'})
+        except:
+            return json.dumps({'ret':'False','msg':'failure running back end process'})
     else:
-        return json.dumps({'html':'<span>Enter the required fields</span>'})
+        return json.dumps({'ret':'False','msg':'include a url for download'})
 
 @app.after_request
 def add_header(r):
