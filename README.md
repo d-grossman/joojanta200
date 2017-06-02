@@ -1,6 +1,6 @@
 # joojanta200
 
-## Two different docker files, two different purposes. 
+## Three different docker files, Three different purposes. 
 
 ### Dockerfile.joojanta200.bulkProcess 
 
@@ -36,6 +36,20 @@ assign **somePort** to an unused port on your machine.  The container will spew 
   docker run -v /dir/to/500megModel:/work/model \
              -p<somePort>:8888 <containerid>
 ```
+### Dockerfile.joojanta200.flask
+
+Simple webapp, user pastes image uri, container downloads image, processes and displays original image over processed image.
+
+  Build:
+```
+  docker build -f Dockerfile.joojanta200.flask .
+``` 
+Run:
+```
+  docker run -v /dir/to/500megModel:/work/model \
+             -p<somePort>:5000 <containerid>
+```
+
 
 ### how not to screw things up in the future..
 things work with the following versions
