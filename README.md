@@ -12,32 +12,42 @@ wget -O TVG_CRFRNN_COCO_VOC.caffemodel http://goo.gl/j7PrPZ
 
 ### Dockerfile.joojanta200.bulkProcess 
 
-for people that want to remove backgrounds in bulk. fill **dirOfInputImages** with files that you want background removal. Output files will appear in **dirToWriteImages**
+for people that want to remove backgrounds in bulk. 
 
   Build:
 ```
   docker build -f Dockerfile.joojanta200.bulkProcess .
 ```
   Run:
+  1. **dirOfInputImages** - directory of images to process
+  1. **dirToWriteImages** - directory to write processed images
+  1. **dirTo500megModel** - directory containing TVG_CRFRNN_COCO_VOC.caffemodel
+  1. **containerid** - containerid from the build
+
 ```
   docker run -v /dirOfInputImages:/work/inputImages \
              -v /dirToWriteImages:/work/outputImages \
-             -v /dir/to/500megModel:/work/model <containerid>
+             -v /dirTo500megModel:/work/model <containerid>
 ```
   
 ### Dockerfile.joojanta200.notebook 
 
 jupyter notebook for looking under the covers
 
-assign **somePort** to an unused port on your machine.  The container will spew forth a webpage to go to. replace the 8888 in the webpage with **somePort** 
+The container will spew forth a webpage to go to. replace the 8888 in the webpage with **somePort** 
 
   Build:
+
 ```
   docker build -f Dockerfile.joojanta200.notebook .
 ```
   Run:
+  1. **somePort** - local port to listen on
+  1. **dirTo500megModel** - directory containing TVG_CRFRNN_COCO_VOC.caffemodel
+  1. **containerid** - containerid from the build
+
 ```
-  docker run -v /dir/to/500megModel:/work/model \
+  docker run -v /dirTo500megModel:/work/model \
              -p <somePort>:8888 <containerid>
 ```
 ### Dockerfile.joojanta200.flask
@@ -48,12 +58,15 @@ Simple webapp, user pastes image uri, container downloads image, processes and d
 ```
   docker build -f Dockerfile.joojanta200.flask .
 ``` 
-Run:
+  Run:
+  1. **somePort** - local port to listen on
+  1. **dirTo500megModel** - directory containing TVG_CRFRNN_COCO_VOC.caffemodel
+  1. **containerid** - containerid from the build 
+
 ```
-  docker run -v /dir/to/500megModel:/work/model \
+  docker run -v /dirTo500megModel:/work/model \
              -p <somePort>:5000 <containerid>
 ```
-
 
 ### how not to screw things up in the future..
 things work with the following versions
