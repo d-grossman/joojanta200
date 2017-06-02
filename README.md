@@ -2,14 +2,18 @@
 
 ## Three different docker files, Three different purposes. 
 
+all the dockers need the model.
+
+download TVG_CRFRNN_COCO_VOC.caffemodel model somewhere and pass directory holding it to the container.
+
+```
+wget -O TVG_CRFRNN_COCO_VOC.caffemodel http://goo.gl/j7PrPZ 
+``` 
+
 ### Dockerfile.joojanta200.bulkProcess 
 
 for people that want to remove backgrounds in bulk. fill **dirOfInputImages** with files that you want background removal. Output files will appear in **dirToWriteImages**
 
-download TVG_CRFRNN_COCO_VOC.caffemodel  model somewhere and pass directory holding it to the container.
-```
-wget -O TVG_CRFRNN_COCO_VOC.caffemodel http://goo.gl/j7PrPZ 
-``` 
   Build:
 ```
   docker build -f Dockerfile.joojanta200.bulkProcess .
