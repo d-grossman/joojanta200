@@ -214,6 +214,7 @@ def find_images(topdir):
 
 def main():
     print 'Starting'
+    print sys.argv,len(sys.argv)
 
     if len(sys.argv) != 1:
         run_crfrnn('/work/flask/static/top.jpg','/work/flask/static/bottom.bmp',-1)
