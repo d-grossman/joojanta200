@@ -2,7 +2,7 @@
 
 ## Three different docker files, Three different purposes. 
 
-all the dockers need the model.
+all the dockers need the model.  The docker containers appear to be memory pigs during inference. I havent tested the lower bounds of their memory lust, but >= 4Gig ram makes things run smoothly.
 
 download TVG_CRFRNN_COCO_VOC.caffemodel model somewhere and pass directory holding it to the container.
 
