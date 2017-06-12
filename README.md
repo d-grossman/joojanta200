@@ -16,7 +16,7 @@ for people that want to remove backgrounds in bulk.
 
   Build:
 ```
-  docker build -f Dockerfile.joojanta200.bulkProcess .
+  docker build -t jj.bulk -f Dockerfile.joojanta200.bulkProcess .
 ```
   Run:
   1. **dirOfInputImages** - directory of images to process
@@ -27,7 +27,7 @@ for people that want to remove backgrounds in bulk.
 ```
   docker run -v /dirOfInputImages:/work/inputImages \
              -v /dirToWriteImages:/work/outputImages \
-             -v /dirTo500megModel:/work/model <containerid>
+             -v /dirTo500megModel:/work/model jj.bulk
 ```
   
 ### Dockerfile.joojanta200.notebook 
@@ -39,7 +39,7 @@ The container will spew forth a webpage to go to. replace the 8888 in the webpag
   Build:
 
 ```
-  docker build -f Dockerfile.joojanta200.notebook .
+  docker build -t jj.notebook -f Dockerfile.joojanta200.notebook .
 ```
   Run:
   1. **somePort** - local port to listen on
@@ -48,7 +48,7 @@ The container will spew forth a webpage to go to. replace the 8888 in the webpag
 
 ```
   docker run -v /dirTo500megModel:/work/model \
-             -p <somePort>:8888 <containerid>
+             -p <somePort>:8888 jj.notebook
 ```
 ### Dockerfile.joojanta200.flask
 
@@ -56,7 +56,7 @@ Simple webapp, user pastes image uri, container downloads image, processes and d
 
   Build:
 ```
-  docker build -f Dockerfile.joojanta200.flask .
+  docker build -t jj.flask -f Dockerfile.joojanta200.flask .
 ``` 
   Run:
   1. **somePort** - local port to listen on
@@ -65,7 +65,7 @@ Simple webapp, user pastes image uri, container downloads image, processes and d
 
 ```
   docker run -v /dirTo500megModel:/work/model \
-             -p <somePort>:5000 <containerid>
+             -p <somePort>:5000 jj.flask
 ```
 
 ### how not to screw things up in the future..
