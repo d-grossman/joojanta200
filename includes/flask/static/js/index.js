@@ -20,7 +20,7 @@ $(function(){
                         console.log(_msg);
                         if (_ret === 'True'){
 
-                        $("#topImage").html("<img height=\"294\" width=\"458\" src=\""+ json['topImage'] + "\"\>");
+                        $("#topImage").html("<script\>\n function rollover(my_image) {\n my_image.src=\"/static/bottom.bmp\";\n }\n </script\>\n"+"<script\>\n function mouseaway(my_image) {\n my_image.src=\"/static/top.jpg\";\n }\n </script\>\n"+ "<img height=\"294\" width=\"458\" src=\""+ json['topImage']+ "\" onmouseover=\"rollover(this)\" onmouseout=\"mouseaway(this)\"  \>");
                                 console.log('top');
                         $("#bottomImage").html("<img height=\"294\" width=\"458\" src=\""+ json['bottomImage'] + "\"\>");
                                 console.log('bottom');
@@ -39,8 +39,5 @@ $(function(){
                         }
                 });
 
-                //$.post(/*...*/).complete(function(){
-                //      btn.prop('disabled',false);
-                //});
         });
 });
