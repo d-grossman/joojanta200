@@ -1,5 +1,9 @@
 # joojanta200
 
+Named after the glasses worn by [Zaphod Beeblebrox in Hitch hikers guide to the galaxy](http://hitchhikers.wikia.com/wiki/Joo_Janta_200_Super-Chromatic_Peril_Sensitive_Sunglasses).  
+
+The project utilizes [CRF as RNN model](http://www.robots.ox.ac.uk/~szheng/papers/CRFasRNN.pdf) to assign labels to pixels.  The demo preserves pixels assigned to people while blacking out all other labels. (Think of it as automating background removal around people)
+
 ## Three different docker files, Three different purposes. 
 
 all the dockers need the model.  The docker containers appear to be memory pigs during inference. I havent tested the lower bounds of their memory lust, but >= 4Gig ram makes things run smoothly.
